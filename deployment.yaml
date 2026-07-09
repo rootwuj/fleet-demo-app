@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-pinger-deployment
+  labels:
+    app: redis-pinger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-pinger
+  template:
+    metadata:
+      labels:
+        app: redis-pinger
+    spec:
+      containers:
+      - name: redis-pinger
+        image: koutiannvqing/redis-pinger:arm64
+        ports:
+        - containerPort: 8080
