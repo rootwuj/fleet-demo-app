@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: redis-pinger
-        image: koutiannvqing/redis-pinger:amd64
+        image: koutiannvqing/redis-pinger:arm64
         env:
         - name: REDIS_HOST
           value: "redis-service"
