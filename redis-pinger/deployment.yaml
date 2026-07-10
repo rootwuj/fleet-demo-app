@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-pinger-deployment
-  labels:
-    app: redis-pinger
 spec:
   replicas: 1
   selector:
@@ -16,6 +14,9 @@ spec:
     spec:
       containers:
       - name: redis-pinger
-        image: koutiannvqing/redis-pinger:arm64
-        ports:
-        - containerPort: 8080
+        image: koutiannvqing/redis-pinger:amd64
+        env:
+        - name: REDIS_HOST
+          value: "redis-service"
+        - name: REDIS_PORT
+          value: "6379"
